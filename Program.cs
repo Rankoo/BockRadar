@@ -1,4 +1,18 @@
+﻿using BookRadar.Data;
+using DotNetEnv;
+using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+Env.Load();
+
+// Read var BOOKRADAR_DB
+var connectionString = Environment.GetEnvironmentVariable("BOOKRADAR_DB");
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString)
+);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
