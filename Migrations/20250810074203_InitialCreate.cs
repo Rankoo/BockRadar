@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BockRadar.Migrations
+namespace BookRadar.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

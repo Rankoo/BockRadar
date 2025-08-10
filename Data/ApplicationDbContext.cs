@@ -1,4 +1,4 @@
-using BockRadar.Models;
+using BookRadar.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookRadar.Data

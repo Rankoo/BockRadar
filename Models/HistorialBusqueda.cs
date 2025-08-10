@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BockRadar.Models
+namespace BookRadar.Models
 {
     public class HistorialBusqueda
     {

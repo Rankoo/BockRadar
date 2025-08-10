@@ -1,4 +1,4 @@
-namespace BockRadar.Models
+namespace BookRadar.Models
 {
     public class ErrorViewModel
     {

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BockRadar.Migrations
+namespace BookRadar.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace BockRadar.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BockRadar.Models.HistorialBusqueda", b =>
+            modelBuilder.Entity("BookRadar.Models.HistorialBusqueda", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
