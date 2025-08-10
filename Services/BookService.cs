@@ -3,7 +3,7 @@ using BookRadar.Services.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
 
-namespace BockRadar.Services
+namespace BookRadar.Services
 {
     public class BookService : IBookService
     {

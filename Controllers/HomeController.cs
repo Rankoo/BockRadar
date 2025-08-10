@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using BockRadar.Models;
+using BookRadar.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BockRadar.Controllers
+namespace BookRadar.Controllers
 {
     public class HomeController : Controller
     {
