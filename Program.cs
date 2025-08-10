@@ -1,4 +1,6 @@
-﻿using BookRadar.Data;
+﻿using BockRadar.Services;
+using BookRadar.Data;
+using BookRadar.Services.Interfaces;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +18,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMemoryCache();
+
+builder.Services.AddHttpClient("OpenLibrary", client =>
+{
+    client.BaseAddress = new Uri("https://openlibrary.org/");
+    client.Timeout = TimeSpan.FromSeconds(10);
+    client.DefaultRequestHeaders.Add("User-Agent", "BookRadar/1.0");
+});
+
+builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
 
