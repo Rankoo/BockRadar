@@ -46,7 +46,7 @@ namespace BockRadar.Services
                     Year = d.FirstPublishYear ?? d.PublishYear?.OrderBy(y => y).FirstOrDefault(),
                     Publisher = d.Publisher?.FirstOrDefault(),
                     Autor = d.Autor ?? "Sin autor",
-                    FechaConsulta = new DateTime()
+                    FechaConsulta = DateTime.Now
                 }).ToList();
 
                 return mapped;

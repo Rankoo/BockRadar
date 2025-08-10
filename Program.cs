@@ -21,6 +21,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddMemoryCache();
 
+// Registro de la API OpenLibrary
 builder.Services.AddHttpClient("OpenLibrary", client =>
 {
     client.BaseAddress = new Uri("https://openlibrary.org/");
@@ -49,6 +50,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Book}/{action=Search}");
 
 app.Run();

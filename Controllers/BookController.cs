@@ -22,7 +22,7 @@ namespace BookRadar.Controllers
 
         // POST: Book/Search
         [HttpPost]
-        public async Task<IActionResult> Search(string author, CancellationToken ct)
+        public async Task<IActionResult> Search(string author)
         {
             if (string.IsNullOrWhiteSpace(author))
             {
@@ -30,7 +30,7 @@ namespace BookRadar.Controllers
                 return View();
             }
 
-            var results = await _bookService.SearchByAuthorAsync(author, ct);
+            var results = await _bookService.SearchByAuthorAsync(author);
             return View("Results", results); // redirige a vista con los resultados
         }
     }
