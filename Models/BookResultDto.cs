@@ -6,5 +6,7 @@ namespace BookRadar.Models
         public string Title { get; set; } = string.Empty;
         public int? Year { get; set; }
         public string? Publisher { get; set; }
+        public string Autor { get; set; } = string.Empty;
+        public DateTime FechaConsulta { get; set; }
     }
 }
