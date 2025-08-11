@@ -48,3 +48,53 @@ dotnet run
 ```
 La aplicación estará disponible en:
 [http://localhost:5000](http://localhost:5000) o [https://localhost:7000](https://localhost:7000)
+
+## 📂 Estructura del proyecto
+```
+BookRadar/
+│── Controllers/
+│   └── BooksController.cs
+│── Data/
+│   └── ApplicationDbContext.cs
+│── Models/
+│   ├── BookResultDto.cs
+│   ├── BookSearchViewModel.cs
+│   ├── HistorialBusqueda.cs
+│   └── OpenLibrarySearchResponse.cs
+│── Repositories/
+│   ├── Interfaces/
+│   │	└──IHistorialRepository.cs
+│   └── HistorialRepository.cs
+│── Services/
+│   ├── Interfaces/
+│   │	└──IBookService.cs
+│   └── BookService.cs
+│── Views/
+│   ├── Books/
+│   │   ├── Index.cshtml
+│   │   └── Historial.cshtml
+│	└── Shared/
+│       ├── _Layout.cshtml
+│       ├── _Layout.cshtml.css
+│       └── _ValidationScriptsPartial.cshtml
+│── database.sql
+│── README.md
+│── .env
+│── BookRadar.csproj
+│── BookRadar.sln
+```
+## 🎨 Decisiones de diseño
+* Bootstrap 5: para una interfaz moderna y responsiva sin sobrecargar el desarrollo.
+* DataTables.js: paginación, búsqueda y ordenamiento en tablas de manera rápida y elegante.
+* Repository Pattern: separación clara entre acceso a datos y lógica de negocio.
+* Stored Procedures: mejor control sobre consultas, optimización y seguridad.
+* Índice en Autor: optimización para búsquedas futuras filtradas por autor.
+* Validaciones frontend y backend: evitar llamadas innecesarias a la API.
+## 💡 Mejoras futuras
+* Autenticación y autorización para gestionar historial por usuario.
+* Paginación del lado del servidor en historial.
+* Exportar historial a Excel o PDF.
+* Filtrar historial por fechas.
+* Integrar pruebas unitarias y de integración.
+## 👨‍💻 Autor
+Aswin Turriago — [Rankoo](https://github.com/Rankoo)
