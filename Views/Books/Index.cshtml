@@ -5,12 +5,19 @@
 
 <h1 class="mb-4">Buscar Libros por Autor</h1>
 
-<form asp-action="Search" method="post" class="mb-4">
+<form asp-action="Search" method="post" id="formBusqueda" class="mb-4">
     <div class="input-group">
-        <input type="text" name="author" class="form-control" placeholder="Ingrese nombre de autor..." required />
+        <input type="text" name="author" id="author" class="form-control" placeholder="Ingrese nombre de autor..." required />
         <button type="submit" class="btn btn-primary">Buscar</button>
     </div>
 </form>
+
+<div id="loader" class="text-center my-4" style="display:none;">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+        <span class="visually-hidden">Buscando...</span>
+    </div>
+    <p class="mt-2">Buscando libros, por favor espere...</p>
+</div>
 
 @if (Model.SearchResults.Any())
 {
@@ -40,14 +47,25 @@
 
 @section Scripts {
     <script>
-        console.log(typeof jQuery); // Debe mostrar "function"
-        console.log(typeof $.fn.dataTable); // Debe mostrar "function"
         $(document).ready(function () {
-            $('#tablaBusqueda').DataTable({
-                pageLength: 10,
-                lengthMenu: [5, 10, 20],
-                language: {
-                    url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+            // Inicializar DataTable si hay resultados
+            if ($('#tablaBusqueda').length) {
+                $('#tablaBusqueda').DataTable({
+                    pageLength: 5,
+                    lengthMenu: [5, 10, 20],
+                    language: { url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json" }
+                });
+            }
+
+            // Mostrar loader al enviar formulario
+            $('#formBusqueda').on('submit', function (e) {
+                let autor = $('#author').val().trim();
+                if (!autor) {
+                    e.preventDefault();
+                    alert("Por favor, ingrese un nombre de autor antes de buscar.");
+                } else {
+                    // Mostrar loader
+                    $('#loader').fadeIn(); 
                 }
             });
         });
