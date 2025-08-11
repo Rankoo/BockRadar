@@ -1,5 +1,6 @@
-﻿using BookRadar.Services;
-using BookRadar.Data;
+﻿using BookRadar.Data;
+using BookRadar.Repositories;
+using BookRadar.Services;
 using BookRadar.Services.Interfaces;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,7 @@ builder.Services.AddHttpClient("OpenLibrary", client =>
 });
 
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IHistorialRepository, HistorialRepository>();
 
 var app = builder.Build();
 

@@ -26,6 +26,6 @@ namespace BookRadar.Models
         public List<string>? Publisher { get; set; }
 
         [JsonPropertyName("author_name")]
-        public string? Autor { get; set; }
+        public List<string>? Autor { get; set; }
     }
 }

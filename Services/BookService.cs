@@ -1,4 +1,5 @@
 ﻿
+using BookRadar.Repositories;
 using BookRadar.Models;
 using BookRadar.Services.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
@@ -11,7 +12,7 @@ namespace BookRadar.Services
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<BookService> _logger;
         private readonly IMemoryCache _cache;
-        private readonly IHistorialRepository _historialRepository; // Para persistir en BD
+        private readonly IHistorialRepository _historialRepository;
 
         public BookService(
             IHttpClientFactory httpClientFactory,
@@ -58,15 +59,17 @@ namespace BookRadar.Services
                 var fechaConsulta = DateTime.Now;
 
                 var mapped = result.Docs
-                    .Where(d => !string.IsNullOrWhiteSpace(d.Title)) // Filtrar vacíos
+                    .Where(d => !string.IsNullOrWhiteSpace(d.Title))
                     .Select(d => new BookResultDto
                     {
                         Title = d.Title ?? "Sin título",
                         Year = d.FirstPublishYear ?? d.PublishYear?.OrderBy(y => y).FirstOrDefault(),
                         Publisher = d.Publisher?.FirstOrDefault(),
-                        Autor = d.AuthorName?.FirstOrDefault() ?? author,
+                        Autor = d.Autor?.FirstOrDefault() ?? author,
                         FechaConsulta = fechaConsulta
                     })
+                    .OrderByDescending(d => d.Year.HasValue)
+                    .ThenByDescending(b => b.Year)
                     .ToList();
 
                 // Guardar resultados en BD
