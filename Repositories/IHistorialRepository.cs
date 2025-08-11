@@ -1,6 +1,6 @@
 ﻿using BookRadar.Models;
 
-namespace BockRadar.Repositories
+namespace BookRadar.Repositories
 {
     public interface IHistorialRepository
     {

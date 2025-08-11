@@ -1,0 +1,52 @@
+﻿@model List<BookRadar.Models.BookResultDto>
+@{
+    ViewData["Title"] = "Historial de Búsquedas";
+}
+
+<h1 class="mb-4">Historial de Búsquedas</h1>
+
+@if (Model.Any())
+{
+    <table id="tablaHistorial" class="table table-hover table-sm table-bordered">
+        <thead>
+            <tr>
+                <th>Autor</th>
+                <th>Título</th>
+                <th>Año</th>
+                <th>Editorial</th>
+                <th>Fecha de Consulta</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var h in Model)
+            {
+                <tr>
+                    <td>@h.Autor</td>
+                    <td>@h.Title</td>
+                    <td>@h.Year</td>
+                    <td>@h.Publisher</td>
+                    <td>@h.FechaConsulta.ToString("dd/MM/yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay búsquedas registradas.</p>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tablaHistorial').DataTable({
+                pageLength: 10,
+                lengthMenu: [5, 10, 20, 50],
+                order: [[4, 'desc']], // Ordenar por FechaConsulta
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+                }
+            });
+        });
+    </script>
+}
