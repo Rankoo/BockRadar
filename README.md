@@ -1,6 +1,6 @@
-﻿# BookRadar 📚
+﻿# BookRadar
 Aplicación ASP.NET Core MVC (.NET 8) que permite buscar libros por autor usando la API pública de Open Library, mostrando resultados en una tabla y almacenando el historial de búsquedas en SQL Server mediante Stored Procedures.
-## 🚀 Características
+## Características
 - **Búsqueda en Open Library API** por nombre de autor.
 - **Prevención de búsquedas duplicadas** (caché de 1 minuto).
 - **Resultados ordenados** por año de publicación.
@@ -10,13 +10,13 @@ Aplicación ASP.NET Core MVC (.NET 8) que permite buscar libros por autor usando
 - **Interfaz con Bootstrap 5 y paginación con DataTables.js.**
 - **Validaciones en frontend** para evitar envíos vacíos.
 
-## 🛠 Tecnologías utilizadas
+## Tecnologías utilizadas
 - **Backend:** .NET 8, ASP.NET Core MVC, C#, Entity Framework Core.
 - **Frontend:** Razor Views, Bootstrap 5, DataTables.js, jQuery.
 - **Base de datos:** SQL Server, Stored Procedures, índices.
 - **Infraestructura:** IHttpClientFactory, IMemoryCache, Repository Pattern.
 
-## 📦 Instalación y ejecución
+## Instalación y ejecución
 ### 1️⃣ Requisitos previos
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [SQL Server](https://www.microsoft.com/es-es/sql-server/sql-server-downloads)
@@ -49,7 +49,7 @@ dotnet run
 La aplicación estará disponible en:
 [http://localhost:5000](http://localhost:5000) o [https://localhost:7000](https://localhost:7000)
 
-## 📂 Estructura del proyecto
+## Estructura del proyecto
 ```
 BookRadar/
 │── Controllers/
@@ -83,18 +83,18 @@ BookRadar/
 │── BookRadar.csproj
 │── BookRadar.sln
 ```
-## 🎨 Decisiones de diseño
+## Decisiones de diseño
 * Bootstrap 5: para una interfaz moderna y responsiva sin sobrecargar el desarrollo.
 * DataTables.js: paginación, búsqueda y ordenamiento en tablas de manera rápida y elegante.
 * Repository Pattern: separación clara entre acceso a datos y lógica de negocio.
 * Stored Procedures: mejor control sobre consultas, optimización y seguridad.
 * Índice en Autor: optimización para búsquedas futuras filtradas por autor.
 * Validaciones frontend y backend: evitar llamadas innecesarias a la API.
-## 💡 Mejoras futuras
+## Mejoras futuras
 * Autenticación y autorización para gestionar historial por usuario.
 * Paginación del lado del servidor en historial.
 * Exportar historial a Excel o PDF.
 * Filtrar historial por fechas.
 * Integrar pruebas unitarias y de integración.
-## 👨‍💻 Autor
+## Autor
 Aswin Turriago — [Rankoo](https://github.com/Rankoo)
