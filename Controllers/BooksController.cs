@@ -1,5 +1,5 @@
 using BookRadar.Models;
-using BookRadar.Repositories;
+using BookRadar.Repositories.Interfaces;
 using BookRadar.Services;
 using BookRadar.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;

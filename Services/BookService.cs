@@ -1,9 +1,8 @@
-﻿
-using BookRadar.Repositories;
-using BookRadar.Models;
+﻿using BookRadar.Models;
 using BookRadar.Services.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
+using BookRadar.Repositories.Interfaces;
 
 namespace BookRadar.Services
 {

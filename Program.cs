@@ -1,5 +1,6 @@
 ﻿using BookRadar.Data;
 using BookRadar.Repositories;
+using BookRadar.Repositories.Interfaces;
 using BookRadar.Services;
 using BookRadar.Services.Interfaces;
 using DotNetEnv;

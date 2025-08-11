@@ -1,6 +1,7 @@
 ﻿using BookRadar.Models;
 using BookRadar.Data;
 using Microsoft.EntityFrameworkCore;
+using BookRadar.Repositories.Interfaces;
 
 namespace BookRadar.Repositories
 {
