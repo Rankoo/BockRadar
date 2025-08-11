@@ -5,24 +5,30 @@ using BookRadar.Services.Interfaces;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
+// =========================================
+// 1. Cargar variables de entorno (.env)
+// =========================================
 Env.Load();
-
-// Read var BOOKRADAR_DB
 var connectionString = Environment.GetEnvironmentVariable("BOOKRADAR_DB");
 
+// =========================================
+// 2. Configuración de servicios
+// =========================================
+
+// Base de datos (SQL Server)
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString)
 );
 
-// Add services to the container.
+// MVC con vistas
 builder.Services.AddControllersWithViews();
 
+// Caché en memoria (para evitar búsquedas repetidas < 1 min)
 builder.Services.AddMemoryCache();
 
-// Registro de la API OpenLibrary
+// Cliente HTTP para API de Open Library
 builder.Services.AddHttpClient("OpenLibrary", client =>
 {
     client.BaseAddress = new Uri("https://openlibrary.org/");
@@ -30,17 +36,18 @@ builder.Services.AddHttpClient("OpenLibrary", client =>
     client.DefaultRequestHeaders.Add("User-Agent", "BookRadar/1.0");
 });
 
+// Inyección de dependencias
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IHistorialRepository, HistorialRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// =========================================
+// 3. Configuración del pipeline HTTP
+// =========================================
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    app.UseHsts(); // Seguridad HTTP Strict Transport Security
 }
 
 app.UseHttpsRedirection();
@@ -50,8 +57,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Rutas por defecto
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Book}/{action=Search}");
+    pattern: "{controller=Books}/{action=Index}/{id?}"
+);
 
 app.Run();
